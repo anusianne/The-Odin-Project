@@ -2,19 +2,20 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
+  margin: auto;
+  width: 60%;
   font-family: "Noto Serif", serif;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 .formContainer {
-  width: 700px;
-  padding-left: 5em;
-  margin-top: 10em;
+  padding-left: 3em;
+  margin-top: 7em;
 }
 .formPart {
   display: flex;
   flex-direction: row;
+  width: 750px;
 }
 .input {
   margin-left: 20px;
@@ -48,9 +49,40 @@ button {
 .login {
   color: #f05e23;
 }
-#img {
-  width: 30%;
+.left-section {
+  flex-grow: 1;
+  position: relative;
 }
-#form-side {
-  width: 60%;
+.logo {
+  background-color: black;
+  opacity: 70%;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  padding: 0.5em 0;
+  text-align: center;
+}
+#logo {
+  width: 100px;
+}
+@font-face {
+  font-family: "Norse-Bold";
+  src: url("Norse-Bold\ \(1\).otf") format("opentype");
+}
+.odin {
+  font-family: "Norse-Bold";
+  font-size: 6rem;
+  color: white;
+  position: absolute;
+  top: 20%;
+}
+#img {
+  width: 100%;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  color: aliceblue;
+  font-weight: 300;
+  padding: 0 5em;
 }
