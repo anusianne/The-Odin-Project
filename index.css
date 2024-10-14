@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  font-family: "Noto Serif", serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.formContainer {
+  width: 700px;
+  padding-left: 5em;
+  margin-top: 10em;
+}
+.formPart {
+  display: flex;
+  flex-direction: row;
+}
+.input {
+  margin-left: 20px;
+}
+input {
+  width: 200px;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #d3d3d3;
+}
+input:focus {
+  outline-color: rgb(81, 81, 219);
+  box-shadow: 0 0 5pt 2pt #d3d3d3;
+}
+label {
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+}
+button {
+  margin-top: 2em;
+  background-color: #f05e23;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+  padding: 1em 4em;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 0 5pt #d3d3d3;
+  cursor: pointer;
+}
+.login {
+  color: #f05e23;
+}
+#img {
+  width: 30%;
+}
+#form-side {
+  width: 60%;
+}
