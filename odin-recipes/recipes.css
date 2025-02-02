@@ -8,11 +8,20 @@ body {
 .container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(249, 56, 39, 0.5);
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 5em;
+  padding: 50px 10px;
+  border-radius: 30px;
+  background-color: rgb(255, 157, 35, 0.5);
 }
 .mainTitle {
   text-align: center;
   color: #16c47f;
   font-size: 3rem;
+  text-shadow: 1px 1px 2px black;
 }
 img {
   display: block;
@@ -27,6 +36,7 @@ img {
   text-decoration: none;
   color: black;
   font-weight: bold;
+  font-size: 1.5rem;
 }
 .recipeItem {
   background-color: rgb(255, 157, 35, 0.8);
@@ -41,4 +51,6 @@ img {
 }
 .recipeItem:hover {
   background-color: rgb(255, 157, 35);
+  transition: transform 150ms ease-in-out;
+  transform: scale(1.2);
 }
