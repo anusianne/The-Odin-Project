@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: "Roboto", serif;
 }
 .body {
   display: flex;
@@ -17,16 +18,26 @@
 .content p {
   font-size: 18px;
 }
+.left-side {
+  max-width: 450px;
+}
 .right-side {
   width: 700px;
   background-color: grey;
   color: white;
   height: 100px;
   margin-left: auto;
+  height: 200px;
+}
+.right-side p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4em;
 }
 button {
   background-color: #3882f6;
-  padding: 5px 25px;
+  padding: 5px 30px;
   border: none;
   border-radius: 7px;
   color: white;
@@ -42,12 +53,13 @@ button {
 .header,
 .content {
   background-color: #1f2937;
+  color: white;
 }
 .header,
 .info,
 .signup,
 footer {
-  padding: 0 20em;
+  padding: 1em 20em;
 }
 .header ul {
   list-style: none;
@@ -86,6 +98,14 @@ footer {
   align-items: center;
   padding: 2em 10em;
 }
-.quote p {
-  flex: 2;
+.signup div {
+  background-color: #3882f6;
+  margin: 3em 20em;
+}
+footer {
+  background-color: #1f2937;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
