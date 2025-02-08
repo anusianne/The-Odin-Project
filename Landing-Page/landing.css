@@ -15,10 +15,11 @@
   font-size: 18px;
 }
 .left-side {
+  flex: 1;
   max-width: 450px;
 }
 .right-side {
-  width: 500px;
+  flex-basis: 500px;
   background-color: grey;
   color: white;
   height: 100px;
@@ -104,7 +105,8 @@ footer,
   justify-content: center;
 }
 .quote p {
-  width: 1000px;
+  max-width: 1000px;
+  text-align: center;
 }
 .signup div {
   background-color: #3882f6;
@@ -112,6 +114,12 @@ footer,
   width: 1200px;
   border-radius: 10px;
   margin: 2em 0;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+.signup button {
+  border: 1px solid white;
 }
 footer {
   background-color: #1f2937;
