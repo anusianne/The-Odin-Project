@@ -10,6 +10,7 @@ let computerScore = 0;
 
 const resultsDiv = document.createElement("div");
 gameContainer.appendChild(resultsDiv);
+const resultsH2 = document.createElement("h2");
 
 function getComputerChoice() {
   return shapes[Math.floor(Math.random() * shapes.length)];
@@ -28,7 +29,8 @@ function playRound(humanChoice, computerChoice) {
     computerScore++;
     resultsDiv.innerText = "Computer won this round!";
   }
-  console.log(`AI score: ${computerScore} Human score: ${humanScore}`);
+  resultsDiv.appendChild(resultsH2);
+  resultsH2.innerText = `AI score: ${computerScore} Human score: ${humanScore}`;
   checkWinner();
 }
 function checkWinner() {
