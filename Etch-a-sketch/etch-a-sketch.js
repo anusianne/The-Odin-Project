@@ -7,10 +7,17 @@ function createGridBoard() {
       gridElement.classList.add("grid");
       container.appendChild(gridElement);
       gridElement.addEventListener("mouseover", () => {
-        gridElement.classList.add("changedColor");
+        gridElement.style.backgroundColor = getRandomColor();
       });
     }
   }
 }
 
 createGridBoard();
+
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r},${g},${b})`;
+}
