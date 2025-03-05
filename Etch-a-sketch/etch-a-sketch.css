@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.grid {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.changedColor {
+  background-color: red;
+}
