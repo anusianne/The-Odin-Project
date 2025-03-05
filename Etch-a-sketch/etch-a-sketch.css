@@ -5,6 +5,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .container {
   width: 400px;
@@ -20,6 +22,8 @@ body {
   box-sizing: border-box;
 }
 
-.changedColor {
-  background-color: red;
+#buttons {
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
 }
