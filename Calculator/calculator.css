@@ -6,10 +6,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
-
 .container {
   display: flex;
+  position: fixed;
   width: 375px;
   height: 812px;
   border: 1px solid black;
@@ -22,7 +24,33 @@ body {
   width: 375px;
   height: 30%;
   display: flex;
-  flex-direction: column;
+  margin-top: 1em;
+}
+#mininav {
+  display: flex;
+  position: fixed;
+  list-style: none;
+  width: 310px;
+  justify-content: flex-end;
+}
+#mininav #img {
+  right: 0;
+}
+#clock {
+  color: white;
+  margin: 0 14em;
+}
+#display img {
+  display: flex;
+  color: white;
+  width: 14px;
+  height: 12px;
+  margin: 2px;
+}
+p {
+  font-size: 48px;
+  margin-right: 1.5em;
+  margin-top: 5em;
 }
 .button {
   width: 75px;
@@ -56,9 +84,19 @@ body {
   height: 447px;
   position: absolute;
   bottom: 0;
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 }
 .zeroBtn {
   width: 167px;
   border-radius: 47px;
+}
+#end {
+  width: 137px;
+  height: 5px;
+  background-color: white;
+  border-radius: 20px;
+  position: absolute;
+  bottom: -15px;
+  left: 10%;
+  transform: translate(45%);
 }
