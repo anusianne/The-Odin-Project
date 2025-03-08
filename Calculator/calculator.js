@@ -62,3 +62,7 @@ equalSign.addEventListener("click", () => {
   calculate();
   updateDisplay();
 });
+clearBtn.addEventListener("click", (e) => {
+  currentNum = 0;
+  updateDisplay();
+});
