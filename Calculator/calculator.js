@@ -4,12 +4,16 @@ const operators = document.querySelectorAll(".operator");
 const equalSign = document.querySelector(".equalSign");
 const clearBtn = document.querySelector(".clearBtn");
 const decimal = document.querySelector(".decimal");
+const plusMinusBtn = document.querySelector(".plusMinusBtn");
+const percent = document.querySelector(".percent");
 let previousNum;
 let currentNum = 0;
 let calculationOperator = "";
 
 const updateDisplay = () => {
-  numDisplay.innerText = currentNum;
+  numDisplay.innerText = parseFloat(currentNum).toLocaleString("en-US", {
+    maximumFractionDigits: 10,
+  });
 };
 
 const inputNumber = (number) => {
@@ -33,11 +37,11 @@ const inputOperator = (operator) => {
 };
 
 const calculate = () => {
-  if (!previousNum || !currentNum) return;
+  if (!previousNum || !currentNum || !calculationOperator) return;
 
   let num1 = parseFloat(previousNum);
   let num2 = parseFloat(currentNum);
-  let result;
+  let result = 0;
 
   switch (calculationOperator) {
     case "+":
@@ -50,19 +54,20 @@ const calculate = () => {
       result = num1 * num2;
       break;
     case "÷":
-      if (num2 === 0) {
-        console.log("err");
-        numDisplay.innerText = "bleee";
-        return;
+      if (num2 !== 0) {
+        result = num1 / num2;
+      } else {
+        result = NaN;
       }
-      result = num1 / num2;
       break;
     default:
       return;
   }
+
   currentNum = result.toString();
-  calculationOperator = "";
   previousNum = "";
+  calculationOperator = "";
+  updateDisplay();
 };
 
 numbers.forEach((number) => {
@@ -88,6 +93,16 @@ clearBtn.addEventListener("click", () => {
   updateDisplay();
 });
 decimal.addEventListener("click", () => {
-  numDisplay.innerText = `0.${currentNum}`;
-  console.log(currentNum);
+  if (!currentNum.includes(".")) {
+    currentNum += ".";
+    updateDisplay();
+  }
+});
+plusMinusBtn.addEventListener("click", () => {
+  currentNum = (parseFloat(currentNum) * -1).toString();
+  updateDisplay();
+});
+percent.addEventListener("click", () => {
+  currentNum = parseFloat(currentNum) / 100;
+  updateDisplay();
 });
