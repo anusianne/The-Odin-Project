@@ -7,7 +7,7 @@ Features
 ✅ Percentage calculations (% button)
 ✅ Decimal point support
 ✅ Clear button (C) to reset the calculator
-✅ Error handling for division by zero
+✅ Error handling for division by zero   
 
 How It Works
 Click to enter numbers.
