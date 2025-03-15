@@ -1,14 +1,17 @@
 const numbers = document.querySelectorAll(".number");
 const numDisplay = document.getElementById("numDisplay");
+const historyDisplay = document.getElementById("historyDisplay"); // Nowy wyświetlacz
 const operators = document.querySelectorAll(".operator");
 const equalSign = document.querySelector(".equalSign");
 const clearBtn = document.querySelector(".clearBtn");
 const decimal = document.querySelector(".decimal");
 const plusMinusBtn = document.querySelector(".plusMinusBtn");
 const percent = document.querySelector(".percent");
-let previousNum;
-let currentNum = 0;
+
+let previousNum = "";
+let currentNum = "0";
 let calculationOperator = "";
+let shouldResetScreen = false; // Flaga do resetowania ekranu po wpisaniu liczby po wyniku
 
 const updateDisplay = () => {
   numDisplay.innerText = parseFloat(currentNum).toLocaleString("en-US", {
@@ -16,24 +19,30 @@ const updateDisplay = () => {
   });
 };
 
+const updateHistory = () => {
+  historyDisplay.innerText = previousNum
+    ? `${previousNum} ${calculationOperator}`
+    : "";
+};
+
 const inputNumber = (number) => {
-  if (currentNum === "0" || currentNum === 0) {
+  if (shouldResetScreen) {
     currentNum = number;
+    shouldResetScreen = false;
   } else {
-    currentNum = currentNum.toString() + number;
+    currentNum = currentNum === "0" ? number : currentNum + number;
   }
 };
 
 const inputOperator = (operator) => {
   if (currentNum === "") return;
-
   if (previousNum !== "") {
     calculate();
   }
-
   previousNum = currentNum;
   calculationOperator = operator;
-  currentNum = "";
+  shouldResetScreen = true;
+  updateHistory();
 };
 
 const calculate = () => {
@@ -54,11 +63,7 @@ const calculate = () => {
       result = num1 * num2;
       break;
     case "÷":
-      if (num2 !== 0) {
-        result = num1 / num2;
-      } else {
-        result = NaN;
-      }
+      result = num2 !== 0 ? num1 / num2 : NaN;
       break;
     default:
       return;
@@ -67,6 +72,7 @@ const calculate = () => {
   currentNum = result.toString();
   previousNum = "";
   calculationOperator = "";
+  updateHistory();
   updateDisplay();
 };
 
@@ -76,33 +82,41 @@ numbers.forEach((number) => {
     updateDisplay();
   });
 });
+
 operators.forEach((operator) => {
   operator.addEventListener("click", (e) => {
     inputOperator(e.target.value);
-    numDisplay.innerText = `${e.target.value}`;
+    updateHistory();
   });
 });
+
 equalSign.addEventListener("click", () => {
   calculate();
   updateDisplay();
 });
+
 clearBtn.addEventListener("click", () => {
   currentNum = "0";
   previousNum = "";
   calculationOperator = "";
+  shouldResetScreen = false;
+  updateHistory();
   updateDisplay();
 });
+
 decimal.addEventListener("click", () => {
   if (!currentNum.includes(".")) {
     currentNum += ".";
     updateDisplay();
   }
 });
+
 plusMinusBtn.addEventListener("click", () => {
   currentNum = (parseFloat(currentNum) * -1).toString();
   updateDisplay();
 });
+
 percent.addEventListener("click", () => {
-  currentNum = parseFloat(currentNum) / 100;
+  currentNum = (parseFloat(currentNum) / 100).toString();
   updateDisplay();
 });
