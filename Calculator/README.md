@@ -1,7 +1,7 @@
 # Simple Calculator
 ## A functional web-based calculator built with HTML, CSS, and JavaScript. It supports basic arithmetic operations, percentage calculations, and negative numbers.
 
-- Features
+Features
   - Addition, subtraction, multiplication, and division
   - Handles negative numbers correctly
   - Percentage calculations (% button)
