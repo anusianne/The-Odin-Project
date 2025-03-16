@@ -1,13 +1,13 @@
 # Simple Calculator
 ## A functional web-based calculator built with HTML, CSS, and JavaScript. It supports basic arithmetic operations, percentage calculations, and negative numbers.
 
-Features
-✅ Addition, subtraction, multiplication, and division
-✅ Handles negative numbers correctly
-✅ Percentage calculations (% button)
-✅ Decimal point support
-✅ Clear button (C) to reset the calculator
-✅ Error handling for division by zero   
+- Features
+  - ✅ Addition, subtraction, multiplication, and division
+  - ✅ Handles negative numbers correctly
+  ✅ Percentage calculations (% button)
+  ✅ Decimal point support
+  ✅ Clear button (C) to reset the calculator
+  ✅ Error handling for division by zero   
 
 How It Works
 Click to enter numbers.
