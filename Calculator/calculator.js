@@ -21,18 +21,11 @@ const updateDisplay = () => {
   if (length > 10) {
     numDisplay.style.fontSize = "36px";
   }
-  if (length > 15) {
-    numDisplay.style.fontSize = "28px";
-  }
-  if (length > 20) {
-    numDisplay.style.fontSize = "20px";
-  }
   if (length <= 10) {
     numDisplay.style.fontSize = "48px";
   }
 };
-
-const MAX_DIGITS = 25;
+const MAX_DIGITS = 15;
 
 const inputNumber = (number) => {
   if (shouldResetScreen) {
@@ -82,6 +75,7 @@ const calculate = () => {
   currentNum = result.toString();
   previousNum = "";
   calculationOperator = "";
+
   updateDisplay();
 };
 
