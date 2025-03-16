@@ -72,6 +72,12 @@ p {
   color: white;
 }
 
+#numDisplay {
+  width: 100%;
+  font-size: 48px;
+  text-align: right;
+  color: white;
+}
 .button {
   width: 75px;
   height: 75px;

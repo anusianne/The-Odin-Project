@@ -11,27 +11,38 @@ const percent = document.querySelector(".percent");
 let previousNum = "";
 let currentNum = "0";
 let calculationOperator = "";
-let shouldResetScreen = false; // Flaga do resetowania ekranu po wpisaniu liczby po wyniku
+let shouldResetScreen = false;
 
 const updateDisplay = () => {
-  numDisplay.innerText = parseFloat(currentNum).toLocaleString("en-US", {
-    maximumFractionDigits: 10,
-  });
+  numDisplay.innerText = currentNum;
+
+  let length = currentNum.replace(/[^0-9]/g, "").length;
+
+  if (length > 10) {
+    numDisplay.style.fontSize = "36px";
+  }
+  if (length > 15) {
+    numDisplay.style.fontSize = "28px";
+  }
+  if (length > 20) {
+    numDisplay.style.fontSize = "20px";
+  }
+  if (length <= 10) {
+    numDisplay.style.fontSize = "48px";
+  }
 };
 
-const updateHistory = () => {
-  historyDisplay.innerText = previousNum
-    ? `${previousNum} ${calculationOperator}`
-    : "";
-};
+const MAX_DIGITS = 25;
 
 const inputNumber = (number) => {
   if (shouldResetScreen) {
     currentNum = number;
     shouldResetScreen = false;
   } else {
+    if (currentNum.replace(/[^0-9]/g, "").length >= MAX_DIGITS) return;
     currentNum = currentNum === "0" ? number : currentNum + number;
   }
+  updateDisplay();
 };
 
 const inputOperator = (operator) => {
@@ -42,7 +53,6 @@ const inputOperator = (operator) => {
   previousNum = currentNum;
   calculationOperator = operator;
   shouldResetScreen = true;
-  updateHistory();
 };
 
 const calculate = () => {
@@ -72,7 +82,6 @@ const calculate = () => {
   currentNum = result.toString();
   previousNum = "";
   calculationOperator = "";
-  updateHistory();
   updateDisplay();
 };
 
@@ -86,7 +95,6 @@ numbers.forEach((number) => {
 operators.forEach((operator) => {
   operator.addEventListener("click", (e) => {
     inputOperator(e.target.value);
-    updateHistory();
   });
 });
 
@@ -95,13 +103,16 @@ equalSign.addEventListener("click", () => {
   updateDisplay();
 });
 
-clearBtn.addEventListener("click", () => {
-  currentNum = "0";
-  previousNum = "";
-  calculationOperator = "";
-  shouldResetScreen = false;
-  updateHistory();
-  updateDisplay();
+document.addEventListener("DOMContentLoaded", () => {
+  const clearBtn = document.querySelector(".clearBtn");
+
+  clearBtn.addEventListener("click", () => {
+    currentNum = "0";
+    previousNum = "";
+    calculationOperator = "";
+    shouldResetScreen = false;
+    updateDisplay();
+  });
 });
 
 decimal.addEventListener("click", () => {
