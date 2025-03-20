@@ -3,12 +3,14 @@ const button = document.getElementById("button");
 const myLibrary = [];
 
 function Book(name, author, id) {
-  this.name = "John";
-  this.author = "Doe";
-  this.id = id;
+  this.name = name;
+  this.author = author;
+  this.id = self.crypto.randomUUID();
 }
 function addBookToLibrary() {
-  console.log("added");
+  const book1 = new Book("Harry Potter", "J.K. Rowling", 1);
+  myLibrary.push(book1);
+  console.log(myLibrary);
 }
 
 button.addEventListener("click", addBookToLibrary);
