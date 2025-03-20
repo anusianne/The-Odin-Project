@@ -2,10 +2,10 @@ const button = document.getElementById("button");
 
 const myLibrary = [];
 
-function Book(name, author, id) {
+function Book(name, author) {
   this.name = name;
   this.author = author;
-  this.id = self.crypto.randomUUID();
+  this.id = crypto.randomUUID();
 }
 function addBookToLibrary() {
   const book1 = new Book("Harry Potter", "J.K. Rowling", 1);
