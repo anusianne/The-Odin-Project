@@ -1,0 +1,50 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+#dialog {
+  width: 200px;
+  border: 1px solid #888;
+  box-shadow: 5px 10px 15px -5px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+#libraryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.bookCard {
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 200px;
+  margin: 3em 1em;
+  text-align: center;
+  justify-content: space-between;
+  padding: 2em;
+  box-shadow: 5px 10px 15px -5px rgba(0, 0, 0, 0.4);
+}
+#show-dialog {
+  margin-top: 2em;
+  background-color: #ff5656;
+  color: white;
+  width: 100px;
+  height: 45px;
+  padding: 0.5em;
+  font-size: 20px;
+  border-radius: 10px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  margin-left: 3em;
+  box-shadow: 5px 8px 8px -5px rgba(0, 0, 0, 0.4);
+}
+#button:hover {
+  opacity: 80%;
+  transform: translateY(8px);
+  transition-duration: 600ms;
+}
