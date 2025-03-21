@@ -10,19 +10,34 @@ const pages = document.getElementById("pages");
 const read = document.getElementById("read");
 const dialogForm = document.getElementById("dialogForm");
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = crypto.randomUUID();
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.id = crypto.randomUUID();
+  }
 }
+
+const bookIntro = new Book("Harry Potter", "J.K. Rowling", 999);
+myLibrary.push(bookIntro);
+const bookCard = document.createElement("div");
+bookCard.classList.add("bookCard");
+bookCard.innerHTML = `<h2>${bookIntro.title}</h2><p>${bookIntro.author}</p><p>${bookIntro.pages} pages</p>`;
+libraryContainer.appendChild(bookCard);
+
 function addBookToLibrary() {
   const book = new Book(title.value, author.value, pages.value, read.value);
   const bookCard = document.createElement("div");
   bookCard.classList.add("bookCard");
+  const deleteBtn = document.createElement("button");
+  bookCard.appendChild(deleteBtn);
   libraryContainer.appendChild(bookCard);
   bookCard.innerHTML = `<h2>${book.title}</h2><p>${book.author}</p><p>${book.pages}</p>`;
+  bookCard.addEventListener("click", () => {
+    bookCard.remove();
+  });
 }
 
 showBtn.addEventListener("click", () => {
