@@ -10,35 +10,58 @@ const pages = document.getElementById("pages");
 const read = document.getElementById("read");
 const dialogForm = document.getElementById("dialogForm");
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = crypto.randomUUID();
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.id = crypto.randomUUID();
+  }
 }
+
+function deleteBook(bookCard, id) {
+  bookCard.remove();
+  const index = myLibrary.findIndex((book) => book.id === id);
+  if (index !== -1) {
+    myLibrary.splice(index, 1);
+  }
+}
+
+function createBookCard(book) {
+  const bookCard = document.createElement("div");
+  bookCard.classList.add("bookCard");
+  bookCard.innerHTML = `
+    <h2>${book.title}</h2>
+    <p>Autor: ${book.author}</p>
+    <p>Strony: ${book.pages}</p>
+    <p>${book.read ? "Read" : "Not Read"}</p>
+    <button class="deleteBtn">Delete</button>
+  `;
+
+  const deleteBtn = bookCard.querySelector(".deleteBtn");
+  deleteBtn.addEventListener("click", () => deleteBook(bookCard, book.id));
+
+  return bookCard;
+}
+
 function addBookToLibrary() {
   const book = new Book(title.value, author.value, pages.value, read.checked);
   myLibrary.push(book);
-  const bookCard = document.createElement("div");
-  bookCard.classList.add("bookCard");
-  libraryContainer.appendChild(bookCard);
-  bookCard.innerHTML = `<h2>${book.title}</h2><p>${book.author}</p><p>${
-    book.pages
-  }</p><p>${book.read ? "Read" : "Not Read"}</p>
-  `;
+  libraryContainer.appendChild(createBookCard(book));
 }
 
-showBtn.addEventListener("click", () => {
-  dialogForm.reset();
-  dialog.showModal();
-  document.body.style.opacity = "30%";
-});
+const bookIntro = new Book("Harry Potter", "J.K. Rowling", 999, false);
+myLibrary.push(bookIntro);
+libraryContainer.appendChild(createBookCard(bookIntro));
 
 dialogForm.addEventListener("submit", (event) => {
   event.preventDefault();
   dialog.close();
-  document.body.style.opacity = "100%";
-
   addBookToLibrary();
+});
+
+showBtn.addEventListener("click", () => {
+  dialogForm.reset();
+  dialog.showModal();
 });
