@@ -18,11 +18,15 @@ function Book(title, author, pages, read) {
   this.id = crypto.randomUUID();
 }
 function addBookToLibrary() {
-  const book = new Book(title.value, author.value, pages.value, read.value);
+  const book = new Book(title.value, author.value, pages.value, read.checked);
+  myLibrary.push(book);
   const bookCard = document.createElement("div");
   bookCard.classList.add("bookCard");
   libraryContainer.appendChild(bookCard);
-  bookCard.innerHTML = `<h2>${book.title}</h2><p>${book.author}</p><p>${book.pages}</p>`;
+  bookCard.innerHTML = `<h2>${book.title}</h2><p>${book.author}</p><p>${
+    book.pages
+  }</p><p>${book.read ? "Read" : "Not Read"}</p>
+  `;
 }
 
 showBtn.addEventListener("click", () => {
@@ -35,5 +39,6 @@ dialogForm.addEventListener("submit", (event) => {
   event.preventDefault();
   dialog.close();
   document.body.style.opacity = "100%";
+
   addBookToLibrary();
 });
