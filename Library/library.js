@@ -25,6 +25,9 @@ const bookIntro = new Book("Harry Potter", "J.K. Rowling", 999, "not read");
 
 function deleteBook(bookCard, id) {
   bookCard.remove();
+  // if (libraryContainer.children.length === 0) {
+  //   libraryContainer.innerHTML = `<h3>Your library is empty. Add a new book and keep reading!</h3>`;
+  // }
   const index = myLibrary.findIndex((book) => book.id === id);
   if (index !== -1) {
     myLibrary.splice(index, 1);
@@ -44,7 +47,6 @@ function createBookCard(book) {
 
   const deleteBtn = bookCard.querySelector(".deleteBtn");
   deleteBtn.addEventListener("click", () => deleteBook(bookCard, book.id));
-
   return bookCard;
 }
 
@@ -54,7 +56,6 @@ libraryContainer.appendChild(createBookCard(bookIntro));
 dialogForm.addEventListener("submit", (event) => {
   event.preventDefault();
   dialog.close();
-
   const book = new Book(title.value, author.value, pages.value, read.value);
   myLibrary.push(book);
   libraryContainer.appendChild(createBookCard(book));
