@@ -9,7 +9,6 @@ const author = document.getElementById("author");
 const pages = document.getElementById("pages");
 const read = document.getElementById("read");
 const dialogForm = document.getElementById("dialogForm");
-const deleteBtn = document.querySelector(".deleteBtn");
 
 class Book {
   constructor(title, author, pages, read) {
@@ -21,8 +20,6 @@ class Book {
   }
 }
 
-const bookIntro = new Book("Harry Potter", "J.K. Rowling", 999, "not read");
-
 function deleteBook(bookCard, id) {
   bookCard.remove();
   // if (libraryContainer.children.length === 0) {
@@ -32,7 +29,6 @@ function deleteBook(bookCard, id) {
   if (index !== -1) {
     myLibrary.splice(index, 1);
   }
-  return bookCard;
 }
 
 function createBookCard(book) {
@@ -42,6 +38,7 @@ function createBookCard(book) {
     <h2>${book.title}</h2>
     <p>Autor: ${book.author}</p>
     <p>Strony: ${book.pages}</p>
+    <p>${book.read ? "Read" : "Not Read"}</p>
     <button class="deleteBtn">Delete</button>
   `;
 
@@ -50,12 +47,20 @@ function createBookCard(book) {
   return bookCard;
 }
 
+function addBookToLibrary() {
+  const book = new Book(title.value, author.value, pages.value, read.checked);
+  myLibrary.push(book);
+  libraryContainer.appendChild(createBookCard(book));
+}
+
+const bookIntro = new Book("Harry Potter", "J.K. Rowling", 999, false);
 myLibrary.push(bookIntro);
 libraryContainer.appendChild(createBookCard(bookIntro));
 
 dialogForm.addEventListener("submit", (event) => {
   event.preventDefault();
   dialog.close();
+  addBookToLibrary();
   const book = new Book(title.value, author.value, pages.value, read.value);
   myLibrary.push(book);
   libraryContainer.appendChild(createBookCard(book));
